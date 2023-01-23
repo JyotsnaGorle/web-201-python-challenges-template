@@ -1,15 +1,25 @@
-# Create a Python function that accepts a string. 
-# The function should return a string, with each 
-# character in the original string doubled. 
-# If you send the function "now" as a parameter, 
-# it should return "nnooww," and if you send "123a!", 
-# it should return "112233aa!!".
-
-def duplicate_characters(str):
-    pass
+def lengthOfLongestSubstring(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    subs = s[0]
+    
+    max = 0
+    for i in range(1, len(s)):
+     if s[i] not in subs:
+          subs = subs + s[i]
+     elif i == len(s) - 1:
+          if (len(subs) > max):
+               max = len(subs)      
+     else:
+          if (len(subs) > max):
+               max = len(subs)
+          subs = ""
+    return max
 
 def test_challenge_02_case_1(): 
-     assert duplicate_characters('now') == 'nnooww'
+     assert lengthOfLongestSubstring("abcabcbb") == 3
 
-def test_challenge_02_case_2(): 
-     assert duplicate_characters('123a!') == '112233aa!!'
+def test_challenge_03_case_1(): 
+     assert lengthOfLongestSubstring("pwwkew") == 3
